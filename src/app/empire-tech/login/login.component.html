@@ -1,0 +1,19 @@
+<div class="container">
+  <p-card class="card-login" header="Login">
+
+    <div class="body-card">
+      <div class="email">
+        <p for="email">E-mail</p>
+        <input pInputText id="email" >
+      </div>
+
+      <div class="password">
+        <p for="password">E-mail</p>
+        <input pInputText id="password" >
+      </div>
+    </div>
+    <ng-template pTemplate="footer">
+      <p-button (click)="login()" label="entrar" ></p-button>
+    </ng-template>
+  </p-card>
+</div>
