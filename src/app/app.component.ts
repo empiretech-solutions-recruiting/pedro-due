@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'teste-tecnico';
+  products:any = {
+    code: "2",
+    name: "empresa",
+    quantity: "5 mil",
+    category: "internacional",
+  };
+
+
 }

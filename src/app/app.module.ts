@@ -1,18 +1,27 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import {TableModule} from "primeng/table";
+import {CollaboratorService} from "./empire-tech/collaborator.service";
+import {HttpClient} from "@angular/common/http";
+
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    TableModule,
+
   ],
-  providers: [],
+  providers: [
+    HttpClient,
+    CollaboratorService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
