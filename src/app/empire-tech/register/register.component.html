@@ -1,0 +1,29 @@
+<div class="container">
+  <p-card class="card-register" header="Register">
+
+    <div class="body-card formgrid grid">
+      <div class="col-6">
+        <p  for="name">Name</p >
+        <input pInputText id="name" class="w-full" >
+      </div>
+
+      <div class="col-6">
+        <p  for="cpf">CPF</p >
+        <input pInputText id="cpf" class="w-full">
+      </div>
+
+      <div class="col-6">
+        <p  for="password">Password</p >
+        <input pInputText type="password" id="password" class="w-full">
+      </div>
+
+      <div class="col-6">
+        <p  for="confirmPassword">Confirm password</p >
+        <input pInputText type="password" id="confirmPassword" class="w-full">
+      </div>
+    </div>
+    <ng-template pTemplate="footer">
+      <p-button label="entrar" ></p-button>
+    </ng-template>
+  </p-card>
+</div>
