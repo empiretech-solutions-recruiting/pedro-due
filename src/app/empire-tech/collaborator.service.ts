@@ -17,18 +17,23 @@ export class CollaboratorService {
     return this.http.post<any>(this.api, collaborator)
   }
 
-  read(collaborator: any): Observable<any>{
+  read(): Observable<any>{
     return this.http.get<any>(this.api)
   }
 
-  update(id: any): Observable<any>{
-    const url = `${this.api}/${id}`
-    return this.http.get<any>(url)
-  }
-
-  delete(collaborator: any): Observable<any>{
+  update(collaborator: any): Observable<any>{
     const url = `${this.api}/${collaborator.id}`
     return this.http.put<any>(url, collaborator)
   }
+
+  delete(id: any): Observable<any>{
+    const url = `${this.api}/${id}`
+    return this.http.delete<any>(url)
+  }
+
+  checkId(id: string): Observable<any> {
+    const url = `${this.api}/${id}`
+    return this.http.get<any>(url)
+  };
 
 }

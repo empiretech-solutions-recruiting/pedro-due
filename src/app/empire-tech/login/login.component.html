@@ -1,19 +1,21 @@
 <div class="container">
-  <p-card class="card-login" header="Login">
+  <p-card class="card-login" header="Login" [formGroup]="form">
 
     <div class="body-card">
       <div class="email">
         <p for="email">E-mail</p>
-        <input pInputText id="email" >
+        <input pInputText id="email" formControlName="email">
       </div>
 
       <div class="password">
-        <p for="password">E-mail</p>
-        <input pInputText id="password" >
+        <p for="password">password</p>
+        <input pInputText type="password" formControlName="password" >
       </div>
     </div>
-    <ng-template pTemplate="footer">
+    <div class="button">
       <p-button (click)="login()" label="entrar" ></p-button>
-    </ng-template>
+      <p-button (click)="redirectToRegister()" label="Cadastre-se" ></p-button>
+
+    </div>
   </p-card>
 </div>

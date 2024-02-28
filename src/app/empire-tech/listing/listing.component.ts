@@ -1,12 +1,17 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FormsModule} from "@angular/forms";
+import {CurrencyPipe, NgIf} from "@angular/common";
+import {Router} from "@angular/router";
+
+//import {CollaboratorService} from "../collaborator.service";
+// import {ConfirmationService, MessageService} from "primeng/api";
 import {TableModule} from "primeng/table";
 import {ButtonModule} from "primeng/button";
 import {RippleModule} from "primeng/ripple";
 import {InputTextModule} from "primeng/inputtext";
 import {DropdownModule} from "primeng/dropdown";
-import {FormsModule} from "@angular/forms";
-import {CurrencyPipe} from "@angular/common";
-import {CollaboratorService} from "../collaborator.service";
+import {ConfirmDialogModule} from "primeng/confirmdialog";
+import {CardModule} from "primeng/card";
 
 @Component({
   selector: 'app-listing',
@@ -18,23 +23,59 @@ import {CollaboratorService} from "../collaborator.service";
     InputTextModule,
     DropdownModule,
     FormsModule,
-    CurrencyPipe
+    CurrencyPipe,
+    ConfirmDialogModule,
+    CardModule,
+    NgIf
   ],
   templateUrl: './listing.component.html',
   styleUrl: './listing.component.scss'
 })
-export class ListingComponent {
+export class ListingComponent implements OnInit {
 
-  collaborators: any[] = []
+  listCollaborator: any[] = [];
 
   constructor(
-    private service: CollaboratorService,
+    private router: Router,
+    // private service: CollaboratorService,
+    // private service: CollaboratorService,
+    // private confirmService: ConfirmationService,
   ) { }
 
-  // getCollaborators(){
-  //   this.service.read().subscribe((collaboratorsRegisted:any[])=> {
-  //     this.
-  //   })
-  // }
 
+  ngOnInit(): void {
+    this.getCollaborators()
+  }
+  getCollaborators(){
+    /*
+    this.service.read().subscribe((collaboratorsRegisted:any[])=> {
+      this.listCollaborator = collaboratorsRegisted
+    })
+     */
+  }
+
+  newCollaborator() {
+    this.router.navigate(['register'])
+  }
+
+  update(id: string) {
+    this.router.navigate([`register/${id}`])
+  }
+
+  delete(id: any) {
+    /* deleta usuário por id:
+    this.confirmService.confirm({
+      message: 'Deseja remover colaborador?',
+      accept: () => {
+        this.service.delete(id).subscribe(() => {
+          console.log('Colaborador removido')
+          this.getCollaborators()
+        })
+      },
+      reject: () => {
+        return this.getCollaborators()
+      }
+    })
+    */
+  }
 }

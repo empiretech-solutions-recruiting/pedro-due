@@ -1,29 +1,43 @@
 <div class="container">
   <p-card class="card-register" header="Register">
 
-    <div class="body-card formgrid grid">
+    <div class="body-card formgrid grid" [formGroup]="form">
       <div class="col-6">
         <p  for="name">Name</p >
-        <input pInputText id="name" class="w-full" >
+        <input pInputText
+               id="name"
+               class="w-full"
+               formControlName="name">
       </div>
 
       <div class="col-6">
-        <p  for="cpf">CPF</p >
-        <input pInputText id="cpf" class="w-full">
+        <p  for="cpf">E-mail</p >
+        <input pInputText
+               id="cpf"
+               class="w-full"
+               formControlName="email">
       </div>
 
       <div class="col-6">
         <p  for="password">Password</p >
-        <input pInputText type="password" id="password" class="w-full">
+        <input pInputText
+               type="password"
+               id="password"
+               class="w-full"
+               formControlName="password">
       </div>
 
       <div class="col-6">
         <p  for="confirmPassword">Confirm password</p >
-        <input pInputText type="password" id="confirmPassword" class="w-full">
+        <input pInputText
+               type="password"
+               id="confirmPassword"
+               class="w-full"
+               formControlName="confirmPassword">
       </div>
     </div>
     <ng-template pTemplate="footer">
-      <p-button label="entrar" ></p-button>
+      <p-button (onClick)="register()" label="Cadastrar" ></p-button>
     </ng-template>
   </p-card>
 </div>

@@ -1,0 +1,21 @@
+.table {
+  display: grid;
+  justify-content: center;
+  max-height: 90vh;
+
+  .new-collaborator {
+    display: grid;
+  }
+
+  .edit-collaborator {
+    margin-right: 2px;
+  }
+
+}
+
+.noCollaborators {
+  display: flex;
+  justify-content: center;
+
+
+}

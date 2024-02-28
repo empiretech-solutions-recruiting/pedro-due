@@ -1,0 +1,59 @@
+<section>
+  <div class="listing"
+       *ngIf="listCollaborator.length > 0, else noCollaborator">
+    <div class="grid-nogutter table">
+      <p-table [value]="listCollaborator" [tableStyle]="{ 'min-width': '50rem' }">
+        <ng-template pTemplate="caption">
+          <div class="grid">
+            <h4 class="col">Colaboradores da empresa:</h4>
+            <p-button class="new-collaborator "
+                      (click)="newCollaborator()">
+              <i class="pi pi-user-plus"></i>
+            </p-button>
+          </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Senha</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-collaborator>
+          <tr>
+
+            <td>{{collaborator.name}}</td>
+            <td>{{collaborator.email}}</td>
+            <td>{{collaborator.password}}</td>
+
+            <td
+              id="buttons col">
+              <p-button (click)="update(collaborator.id)" class="edit-collaborator">
+                <i class="pi pi-pencil"></i>
+              </p-button>
+
+              <p-confirmDialog
+                header="Confirmação necessária"
+                icon="pi pi-exclamation-triangle">
+              </p-confirmDialog>
+
+              <p-button
+                (click)="delete(collaborator.id)">
+                <i class="pi pi-trash"></i>
+              </p-button>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+  </div>
+  <ng-template #noCollaborator>
+    <p-card class="text-center noCollaborators">
+      <h4>Não há nenhum funcionario cadastrado</h4>
+      <p-button (click)="newCollaborator()">
+        <i class="pi pi-user-plus"></i>
+      </p-button>
+    </p-card>
+  </ng-template>
+
+</section>

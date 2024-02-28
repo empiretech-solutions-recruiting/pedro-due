@@ -4,8 +4,9 @@ import {CardModule} from "primeng/card";
 import {ButtonModule} from "primeng/button";
 import {InputGroupModule} from "primeng/inputgroup";
 import {InputTextModule} from "primeng/inputtext";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {CollaboratorService} from "../collaborator.service";
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,8 @@ import {Router} from "@angular/router";
     CardModule,
     ButtonModule,
     InputGroupModule,
-    InputTextModule
+    InputTextModule,
+    ReactiveFormsModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
@@ -25,10 +27,10 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private router: Router
-  ) {
-  }
-//validacao dos campos
+    private router: Router,
+    // private service: CollaboratorService
+  ) { }
+
   ngOnInit(): void {
     this.form = this.fb.group({
       email: ['',
@@ -47,11 +49,42 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    if(this.form.status == 'VALID') {
 
-      this.router.navigate(['listing'])
-    } else {
-      console.log('login inválido')
+    const collaborator = {
+      email: this.form.value.email,
+      password: this.form.value.password
     }
+    /*Consultando usuário no banco:
+    if(this.form.status !== 'INVALID'){
+      this.service.create(collaborator).subscribe((res)=>{
+        console.log(res)
+        if(!res.hasOwnProperty('error')) {
+          console.log('Usuário logado')
+          console.log(collaborator)
+        }
+      })
+    }else {
+       console.log('Erro no login, usuário não cadastrado')
+       console.log(collaborator)
+      }
+    */
+
+    if(this.form.status !== 'INVALID') {
+      console.log(collaborator)
+      console.log(this.form.status)
+      this.redirectToListing()
+    } else {
+      console.log('login inválido, revise os campos ou cadastre-se')
+      console.log(collaborator)
+      console.log('STATUS FORM: ' + this.form.status)
+    }
+  }
+
+  redirectToListing(){
+    this.router.navigate(['listing'])
+  }
+
+  redirectToRegister(){
+    this.router.navigate(['register'])
   }
 }
